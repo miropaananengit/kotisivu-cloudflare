@@ -5,8 +5,5 @@
   "description": "Miro Paananen kotisivu Cloudflare worker",
   "main": "index.js",
   "author": "Miro Paananen",
-  "license": "MIT",
-  "dependencies": {
-    "@cloudflare/kv-asset-handler": "^0.3.0"
-  }
+  "license": "MIT"
 }

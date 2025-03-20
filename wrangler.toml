@@ -1,9 +1,5 @@
 name = "kotisivu-cloudflare"
-type = "webpack"
-account_id = ""
-workers_dev = true
-route = ""
-zone_id = ""
+main = "workers-site/index.js"
 compatibility_date = "2025-03-20"
 
 [site]
