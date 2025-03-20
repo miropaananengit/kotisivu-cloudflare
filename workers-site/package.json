@@ -1,9 +1,0 @@
-{
-  "private": true,
-  "name": "kotisivu-cloudflare-worker",
-  "version": "1.0.0",
-  "description": "Miro Paananen kotisivu Cloudflare worker",
-  "main": "index.js",
-  "author": "Miro Paananen",
-  "license": "MIT"
-}
