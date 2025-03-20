@@ -1,0 +1,11 @@
+{
+  "name": "kotisivu-cloudflare",
+  "version": "1.0.0",
+  "description": "Miro Paananen kotisivu",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Miro Paananen",
+  "license": "MIT"
+}
