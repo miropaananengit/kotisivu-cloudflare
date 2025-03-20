@@ -1,0 +1,10 @@
+<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF4D4D" />
+      <stop offset="100%" stop-color="#FF8533" />
+    </linearGradient>
+  </defs>
+  <path d="M20 2C10.059 2 2 10.059 2 20s8.059 18 18 18 18-8.059 18-18S29.941 2 20 2zm0 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4zm-9 9h18a9 9 0 0 1 9 9 9 9 0 0 1-9 9H11a9 9 0 0 1-9-9 9 9 0 0 1 9-9z" fill="url(#logo-gradient)"/>
+  <text x="20" y="26" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="white">MP</text>
+</svg>

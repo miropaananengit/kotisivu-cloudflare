@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Miro Paananen - Projektit</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="theme-color" content="#0f0c29">
+    <script src="http://localhost:35729/livereload.js"></script>
+    <style>
+        /* Blinking green light animation */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        
+        .availability-indicator {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background-color: #2ecc71;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: blink 2s infinite;
+            box-shadow: 0 0 10px #2ecc71;
+        }
+        
+        .availability-section {
+            text-align: center;
+            padding: 4rem 2rem 6rem;
+            background: rgba(26, 26, 46, 0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .availability-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .coming-soon-text {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .projects-container {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 6rem;
+        }
+        
+        .project-timeline {
+            margin-top: 4rem;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .timeline-item {
+            background: rgba(26, 26, 46, 0.4);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-left-width: 8px;
+        }
+        
+        .timeline-item h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: var(--gradient);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .step-card {
+            background: rgba(26, 26, 46, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+        
+        .step-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .step-card h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .step-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <header style="background-color: transparent; z-index: 1010;">
+        <nav style="max-width: none; margin: 0; padding-left: 2rem; padding-right: 2rem;">
+            <!-- Remove the logo image -->
+            <!-- <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Logo">
+                    <span class="logo-text">Miro Paananen</span>
+                </a>
+            </div> -->
+            <!-- Center the "Mobiili Beta" text -->
+            <div class="mobile-beta-text" style="left: 50%; transform: translateX(-50%);">Mobiili Beta</div>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Etusivu</a></li>
+                <li><a href="projektit.html" class="active"><i class="fas fa-code"></i> Projektit</a></li>
+                <li><a href="tietoa.html"><i class="fas fa-user"></i> Tietoa minusta</a></li>
+                <li><a href="yhteystiedot.html"><i class="fas fa-envelope"></i> Yhteystiedot</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main style="padding-top: 60px;">
+        <!-- Projects Container - Moved to top -->
+        <section class="projects" style="background-color: transparent;">
+            <div class="container projects-container">
+                <!-- Availability section moved up -->
+                <div class="availability-section">
+                    <div class="availability-status">
+                        <span class="availability-indicator"></span>
+                        <span>Valmis uusiin projekteihin!</span>
+                    </div>
+                    <h2>Projektit tulossa pian</h2>
+                    <p class="coming-soon-text">
+                        Työskentelen parhaillaan uusien projektien parissa ja päivitän portfolioni pian. 
+                        Jos olet kiinnostunut yhteistyöstä, ota rohkeasti yhteyttä!
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="yhteystiedot.html" class="btn primary">
+                            <span class="btn-content"><i class="fas fa-envelope"></i> Ota yhteyttä</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- New content: Project Timeline -->
+                <div class="project-timeline">
+                    <h2 class="section-title">Tulevat projektit</h2>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-date">Kesä 2025</span>
+                        <h3>TaskBite – Palkitseva tehtävälista</h3>
+                        <p>TaskBite on älykäs tehtävälista androidille ja iphonelle, joka motivoi sinua suorittamaan päivän tehtävät tarjoamalla hauskoja ja palkitsevia yllätyksiä jokaisesta suoritetusta tehtävästä.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-date">Kesä 2025</span>
+                        <h3>Valokuvausverkkosivusto asiakkaalle</h3>
+                        <p>Suunnitteilla ja toteutuksessa tyylikäs ja käyttäjäystävällinen valokuvausverkkosivusto asiakkaalle. Sivusto esittelee visuaalisesti upean portfolio-gallerian sekä tarjoaa helpon tavan ottaa yhteyttä ja varata kuvauspalveluita.</p>
+                    </div>
+                </div>
+                
+                <!-- New content: Project Process -->
+                <h2 class="section-title">Näin työskentelen</h2>
+                <div class="process-steps">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Suunnittelu</h3>
+                        <p>Aloitamme määrittelemällä tavoitteet, kohderyhmän ja tekniset vaatimukset projektillesi.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Konseptointi</h3>
+                        <p>Luon rautalankamallit ja visuaalisen ilmeen, jotka vastaavat täysin tarpeitasi.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Kehitys</h3>
+                        <p>Rakennan sivuston moderneilla teknologioilla, huomioiden suorituskyvyn ja käytettävyyden.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3>Julkaisu</h3>
+                        <p>Julkaisen sivuston, teen viimeiset optimoinnit ja koulutan sinut käyttämään järjestelmää.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links" style="display: none;">
+                <a href="#" class="social-hover"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-hover"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-hover"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2025 Miro Paananen. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu functionality
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+            this.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('nav ul').classList.remove('show');
+                document.querySelector('.hamburger').classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (!nav.contains(e.target) && document.querySelector('nav ul').classList.contains('show')) {
+                document.querySelector('nav ul').classList.remove('show');
+                hamburger.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        });
+        
+        // Parannettu header-toiminnallisuus mobiilissa
+        let lastScrollTop = 0;
+        let headerTimeoutId;
+        
+        function handleHeaderVisibility() {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Näytä header aina, kun scrollataan ylös
+            if (currentScroll < lastScrollTop) {
+                header.classList.remove('header-hidden');
+                
+                // Lisätään scrolled-luokka, jos ollaan scrollattu yli 50px
+                if (currentScroll > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            } 
+            // Piilota header, kun scrollataan alas ja ollaan yli 150px alhaalla
+            else if (currentScroll > lastScrollTop && currentScroll > 150) {
+                header.classList.add('header-hidden');
+                
+                // Varmistetaan, että scrolled-luokka on päällä
+                if (currentScroll > 50) {
+                    header.classList.add('scrolled');
+                }
+            }
+            
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        }
+        
+        // Käytetään vain mobiilissa
+        if (window.innerWidth <= 768) {
+            window.addEventListener('scroll', function() {
+                clearTimeout(headerTimeoutId);
+                
+                // Rajoitetaan suorituskertoja suorituskyvyn parantamiseksi
+                headerTimeoutId = setTimeout(handleHeaderVisibility, 10);
+            }, { passive: true });
+        }
+
+        // Fix for mobile card hover issue - add touch event handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add scroll reveal to step cards
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Add scroll-reveal class to step cards and observe them
+            document.querySelectorAll('.step-card').forEach(card => {
+                card.classList.add('scroll-reveal');
+                observer.observe(card);
+            });
+            
+            // Add specific touch handlers for mobile devices
+            if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+                const cards = document.querySelectorAll('.skill-card, .benefit-card, .step-card');
+                
+                cards.forEach(card => {
+                    // Remove any persistent active states that might be causing the issue
+                    card.classList.remove('active');
+                    
+                    // Add toggle functionality for touch devices
+                    card.addEventListener('touchstart', function(e) {
+                        // Prevent default only if card has overlay
+                        if (card.querySelector('.card-overlay')) {
+                            e.preventDefault();
+                            
+                            // Remove active class from all other cards
+                            cards.forEach(c => {
+                                if (c !== card) c.classList.remove('active');
+                            });
+                            
+                            // Toggle active class on this card
+                            card.classList.toggle('active');
+                        }
+                    }, {passive: false});
+                });
+                
+                // Close card when touching elsewhere
+                document.addEventListener('touchstart', function(e) {
+                    if (!e.target.closest('.skill-card, .benefit-card, .step-card')) {
+                        cards.forEach(card => card.classList.remove('active'));
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

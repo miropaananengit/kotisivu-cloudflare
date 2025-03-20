@@ -1,0 +1,3768 @@
+/* Yleiset tyylit */
+:root {
+    --primary-color: #FF4D4D;
+    --secondary-color: #FF8533;
+    --accent-color: #FFB84D;
+    --dark-color: #1A1A1A;
+    --darker-color: #121212;
+    --light-color: #f8f8f8;
+    --gray-color: #2A2A2A;
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --gradient-accent: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--light-color);
+    /* New unified background with animated gradient */
+    background: linear-gradient(125deg, #0f0c29, #302b63, #24243e);
+    background-size: 300% 300%;
+    animation: gradientAnimation 20s ease infinite; /* Slower animation to reduce CPU usage */
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Optimize gradient animation */
+@keyframes gradientAnimation {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Optimize body::before pattern for performance */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.1; /* Reduced opacity */
+    background-image: none; /* Removed the radial gradients */
+    z-index: -1;
+}
+
+/* Add floating elements */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(2deg);
+    }
+}
+
+@keyframes float-reverse {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(20px) rotate(-2deg);
+    }
+}
+
+/* Header ja navigaatio */
+header {
+    background-color: transparent; /* Removed black color */
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px); /* Added to blur background when scrolling */
+}
+
+/* Add these new styles to fix mobile header overlap */
+@media (max-width: 768px) {
+    header {
+        padding: 0.7rem 1.5rem; /* More compact header for mobile */
+        z-index: 1010; /* Ensure header stays above other content */
+    }
+    
+    main {
+        /* Add extra padding to ensure content starts below the header */
+        padding-top: 70px; /* Increased from previous value */
+    }
+    
+    /* Adjust top section to prevent content overlap */
+    .hero {
+        padding-top: 80px; /* Increased padding to create more space */
+        margin-top: 0; /* Remove any negative margin that could cause overlap */
+    }
+    
+    /* Ensure content in about and other pages also doesn't overlap */
+    .about-content, 
+    .contact-content,
+    .projects-container {
+        padding-top: 80px; /* Add extra padding for all main content sections */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 0.5rem 1rem; /* Compact header for smaller phones */
+    }
+    
+    main {
+        padding-top: 60px; /* Slightly smaller value for very small screens */
+    }
+    
+    /* Add extra space after the header for the smallest screens */
+    .hero {
+        padding-top: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 0.5rem 1rem; /* Even more compact for very small screens */
+    }
+    
+    .hero {
+        padding-top: 4.5rem; /* Adjust padding for smaller screens */
+    }
+    
+    .hero-content {
+        padding-top: 1rem; /* Give the hero content some breathing room */
+    }
+}
+
+header.scrolled {
+    background-color: rgba(26, 26, 26, 0.95); /* Removed black color */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px); /* Ensure blur effect when scrolled */
+}
+
+header.scrolled nav {
+    background: transparent;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between; /* Changed from center to space-between */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: transparent;
+}
+
+/* Logo positioning and hover effects */
+.logo {
+    margin-right: auto; /* Pushes everything else to the right */
+    padding-left: 0;    /* Removes any padding on the left */
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
+.logo-svg {
+    height: 80px;
+    width: auto;
+    display: block; 
+    content: url('logo2.png');
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    /* Ensure there's enough space for the logo */
+    padding: 10px;
+}
+
+.logo-svg {
+    height: 80px; /* Increased from 50px to 80px for better visibility */
+    width: auto; /* Maintain aspect ratio */
+    display: block; 
+    content: url('logo2.png'); /* Display the PNG image instead of SVG */
+}
+
+.logo-text {
+    display: none; /* Hide the text next to the logo */
+    margin-left: 10px; /* Add some spacing between logo and text when displayed */
+}
+
+/* Ensure logo is visible in scrolled state */
+header.scrolled .logo {
+    color: white; /* Ensure logo color is white when scrolled */
+}
+
+header.scrolled .logo-svg {
+    /* Add specific styling for scrolled state if needed */
+    filter: none; /* Remove any filters that might affect visibility */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav ul li a {
+    color: white; /* Ensure nav link color is white */
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+}
+
+header.scrolled nav ul li a {
+    color: white; /* Ensure nav link color is white when scrolled */
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+    width: 100%;
+}
+
+nav ul li a i {
+    font-size: 1.1rem;
+}
+
+/* Hero-osio */
+.hero {
+    min-height: 95vh; 
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    padding-bottom: 3.5rem;
+    background: transparent;
+    overflow: hidden;
+    margin-top: -50px;
+}
+
+/* Remove the previous hero background elements */
+.hero::before, .hero::after {
+    display: none;
+}
+
+/* Add new geometric elements to hero */
+.hero-geometric {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 77, 77, 0.1);
+    filter: blur(30px); /* Reduced blur for better performance */
+    z-index: 0;
+    will-change: transform; /* Hint to browser for hardware acceleration */
+}
+
+.geo-1, .geo-2, .geo-3 {
+    display: none; /* Hide all geometric elements */
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    z-index: 2;
+    max-width: 800px;
+    position: relative;
+    padding: 2rem;
+    border-radius: 20px;
+    background: rgba(42, 42, 42, 0.3);
+    border: 2px solid var(--secondary-color); /* Changed border to orange */
+    animation: fadeIn 0.6s ease-out;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: white;
+}
+
+.hero .subtitle {
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+    font-weight: 500;
+    animation: fadeIn 0.6s ease-out 0.3s both;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    animation: fadeIn 0.6s ease-out 0.6s both;
+}
+
+/* Scroll-down nuoli */
+.scroll-down {
+    position: absolute;
+    bottom: 20px; /* Move up slightly from 30px */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    animation: bounce 2s infinite;
+    opacity: 0.7;
+    z-index: 5;
+}
+
+.scroll-down i {
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.scroll-down:hover {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.1);
+}
+
+.scroll-down:hover i {
+    background: var(--gradient);
+    border-color: transparent;
+}
+
+/* Scroll-up nuoli (matching the scroll-down arrow) */
+.scroll-up {
+    position: absolute;
+    top: 60px; /* Increased top position to make it more visible */
+    left: 50%; 
+    transform: translateX(-50%);
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    animation: bounce 2s infinite; /* Same animation as down arrow */
+    opacity: 0.7; /* Match down arrow opacity */
+    z-index: 10; 
+}
+
+.scroll-up i {
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.scroll-up:hover {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.1);
+}
+
+.scroll-up:hover i {
+    background: var(--gradient);
+    border-color: transparent;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* Painikkeet */
+.btn {
+    display: inline-block;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: white;
+}
+
+.btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 77, 77, 0.3);
+}
+
+/* Osaaminen */
+.highlights {
+    min-height: 100vh;
+    padding: 6rem 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: transparent;
+    overflow: hidden;
+    z-index: 2;
+}
+
+/* Remove previous highlight backgrounds */
+.highlights::before, .highlights::after {
+    display: none;
+}
+
+/* Add subtle geometric elements to highlights section */
+.highlights-geometric {
+    position: absolute;
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    background: rgba(255, 77, 77, 0.1);
+    filter: blur(30px);
+    z-index: 0;
+    will-change: transform;
+}
+
+.highlights-geometric,
+.quote-geometric,
+.shape-1, .shape-2, .shape-3 {
+    display: none; /* Hide all floating shapes */
+}
+
+.skills-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin-top: 3rem; /* Added margin top to push the grid down */
+    position: relative;
+    z-index: 2; /* Ensure it's above background layers */
+}
+
+.skill-card {
+    padding: 2rem;
+    text-align: center;
+    background: rgba(26, 26, 46, 0.7);
+    border: 2px solid transparent;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer; /* Change cursor to pointer on hover */
+    backdrop-filter: blur(10px);
+    will-change: transform; /* Add for hardware acceleration */
+}
+
+.skill-card:hover {
+    border-image: var(--gradient);
+    border-image-slice: 1;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 77, 77, 0.2);
+}
+
+.skill-card i {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    color: white; /* Ensure skill card icon color is white */
+}
+
+.skill-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    color: white; /* Ensure skill card title color is white */
+}
+
+/* Korttien parannukset */
+.card-overlay {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.skill-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.hover-content {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease 0.1s;
+}
+
+.skill-card:hover .hover-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.hover-content p {
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* Projektit */
+.page-header {
+    background: var(--darker-color); /* Changed from var(--gray-color) to var(--darker-color) */
+    color: white; /* Ensure page header text color is white */
+    padding: 8rem 2rem 4rem;
+    text-align: center;
+}
+
+.page-header h1 {
+    color: white; /* Ensure page header title color is white */
+}
+
+.projects {
+    padding: 4rem 2rem;
+    background-color: var(--dark-color);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background-color: var(--darker-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+    border: 1px solid var(--gray-color);
+}
+
+.project-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 24px rgba(255, 77, 77, 0.15);
+}
+
+.project-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-image::before {
+    opacity: 0.3;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.project-tags span {
+    background: var(--gradient);
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+}
+
+/* Footer */
+footer {
+    background: transparent;
+    color: white;
+    padding: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+/* Add subtle gradient to footer as well for continuity */
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: none; /* Removed radial gradient */
+    z-index: 0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Hamburger-valikko */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1010;
+    padding: 8px;
+    margin-right: -8px;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background-color: var(--dark-color);
+    transition: all 0.3s ease;
+    background-color: white;
+    display: block;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Responsiivisuus */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    nav {
+        justify-content: flex-end;
+    }
+
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--dark-color);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--gray-color);
+        background-color: rgba(18, 18, 24, 0.98);
+        border-radius: 0 0 15px 15px;
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        align-items: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transform: translateY(-20px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    nav ul.show {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    nav ul li {
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        position: relative;
+        padding: 1rem 0;
+        width: 100%;
+        justify-content: center;
+        font-size: 1.1rem;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.4rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .skill-card {
+        animation: none;
+    }
+
+    .shape {
+        animation: none;
+        opacity: 0.1;
+    }
+    
+    .highlights {
+        padding: 5rem 1.5rem; /* Slightly reduce padding on mobile */
+    }
+
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    .hero {
+        min-height: 85vh;
+        margin-top: 0;
+        padding: 7rem 1rem 3rem;
+    }
+
+    .hero-content {
+        padding: 1.5rem;
+        width: 90%;
+        max-width: none;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-geometric {
+        filter: blur(20px);
+        opacity: 0.5;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        width: 90%;
+    }
+
+    .skill-card {
+        padding: 1.5rem;
+    }
+
+    .skill-card i {
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .skill-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .scroll-down, .scroll-up {
+        font-size: 1.2rem;
+    }
+
+    .scroll-down i, .scroll-up i {
+        width: 35px;
+        height: 35px;
+    }
+
+    .scroll-up {
+        top: 40px;
+    }
+    
+    /* Hide scroll-down arrows on mobile */
+    .scroll-down,
+    .section-scroll {
+        display: none;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-height: 700px) {
+    .hero {
+        min-height: 90vh; /* Even shorter on very small screens */
+        padding-bottom: 3rem;
+    }
+    
+    .hero-content {
+        padding: 1.5rem;
+    }
+    
+    .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .scroll-down {
+        bottom: 10px;
+    }
+}
+
+/* Animaatiot */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.skill-card, .project-card {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Tietoa minusta -sivu */
+.about-content {
+    padding: 8rem 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Background decoration for about page */
+.about-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: none; /* Removed radial gradients */
+    z-index: -1;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Changed from 1fr 2fr to just 1fr */
+    gap: 4rem;
+    align-items: center; /* Changed from start to center */
+    max-width: 800px; /* Added max-width for better readability */
+    margin: 0 auto; /* Center the grid horizontally */
+}
+
+/* Enhanced profile image styling */
+.about-image {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-image img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+}
+
+.about-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 3px var(--secondary-color);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.about-image:hover::after {
+    opacity: 1;
+}
+
+.about-image:hover img {
+    transform: scale(1.03);
+}
+
+/* Enhanced text content styling */
+.about-text {
+    padding: 1rem;
+}
+
+.about-text h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    color: white;
+    position: relative;
+    display: inline-block;
+}
+
+.about-text h2::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 4px;
+    background: var(--gradient);
+    bottom: -10px;
+    left: 0;
+    border-radius: 2px;
+}
+
+.about-text p {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.about-text h3 {
+    font-size: 1.8rem;
+    margin: 3rem 0 1.5rem;
+    color: white;
+    position: relative;
+    display: inline-block;
+}
+
+.about-text h3::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background: var(--gradient);
+    bottom: -8px;
+    left: 0;
+    border-radius: 2px;
+}
+
+/* Enhanced skill bars */
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.skill-item {
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+}
+
+.skill-item span {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+    color: white;
+    position: relative; /* Add position relative */
+}
+
+.skill-item span::after {
+    content: attr(data-percent);
+    color: var(--accent-color);
+}
+
+/* Add initial state for skill-level */
+.skill-level {
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 5px;
+    width: 0; /* Start at 0 width for animation */
+    transition: width 2.5s ease-in-out; /* Increased from 1.5s to 2.5s for slower animation */
+    position: relative;
+}
+
+.skill-item span::after {
+    content: attr(data-percent);
+    color: var(--accent-color);
+}
+
+.skill-bar {
+    height: 10px;
+    background-color: var(--gray-color);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-level {
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 5px;
+    transition: width 2.5s ease-in-out;
+    position: relative;
+}
+
+.skill-level::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0 5px 5px 0;
+}
+
+/* Personal info section */
+.personal-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.info-item i {
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 77, 77, 0.1);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+/* Fix for email icon to ensure it's perfectly circular */
+.info-item .email-icon {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+}
+
+.info-item:hover i {
+    background: var(--primary-color);
+    color: white;
+}
+
+.info-item .info-text h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+    opacity: 0.7;
+}
+
+.info-item .info-text p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Responsive adjustments for about page */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-image {
+        max-width: 300px;
+        margin: 0 auto 2rem;
+    }
+    
+    .skills-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .personal-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-text h2 {
+        font-size: 2.2rem;
+    }
+    
+    .about-text h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Tietoa minusta -sivu */
+.about-content {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: white; /* Changed from var(--dark-color) to white */
+}
+
+.about-text p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.about-text h3 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    color: white; /* Changed from var(--dark-color) to white */
+}
+
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.skill-item span {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.skill-bar {
+    height: 8px;
+    background-color: var(--light-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-level {
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 4px;
+    transition: width 1s ease-in-out;
+}
+
+.education {
+    margin-top: 1rem;
+}
+
+.education-item {
+    padding: 1rem;
+    background-color: var(--light-color);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.education-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var (--dark-color);
+}
+
+.education-item span {
+    color: black; /* Changed from var(--primary-color) to black */
+    font-weight: 500;
+}
+
+.education-item p {
+    color: var(--secondary-color); /* Added to change text color to orange */
+}
+
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-image {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+/* Tietoa minusta -sivu - Enhanced styling */
+.about-content {
+    padding: 8rem 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Background decoration for about page */
+.about-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: none; /* Removed radial gradients */
+    z-index: -1;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Changed from 1fr 2fr to just 1fr */
+    gap: 4rem;
+    align-items: center; /* Changed from start to center */
+    max-width: 800px; /* Added max-width for better readability */
+    margin: 0 auto; /* Center the grid horizontally */
+}
+
+/* Enhanced profile image styling */
+.about-image {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-image img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+}
+
+.about-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 3px var(--secondary-color);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.about-image:hover::after {
+    opacity: 1;
+}
+
+.about-image:hover img {
+    transform: scale(1.03);
+}
+
+/* Enhanced text content styling */
+.about-text {
+    padding: 1rem;
+}
+
+.about-text h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    color: white;
+    position: relative;
+    display: inline-block;
+}
+
+.about-text h2::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 4px;
+    background: var(--gradient);
+    bottom: -10px;
+    left: 0;
+    border-radius: 2px;
+}
+
+.about-text p {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.about-text h3 {
+    font-size: 1.8rem;
+    margin: 3rem 0 1.5rem;
+    color: white;
+    position: relative;
+    display: inline-block;
+}
+
+.about-text h3::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background: var(--gradient);
+    bottom: -8px;
+    left: 0;
+    border-radius: 2px;
+}
+
+/* Enhanced skill bars */
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.skill-item {
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+}
+
+.skill-item span {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+    color: white;
+    position: relative; /* Add position relative */
+}
+
+.skill-item span::after {
+    content: attr(data-percent);
+    color: var(--accent-color);
+}
+
+/* Add initial state for skill-level */
+.skill-level {
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 5px;
+    width: 0; /* Start at 0 width for animation */
+    transition: width 2.5s ease-in-out; /* Increased from 1.5s to 2.5s for slower animation */
+    position: relative;
+}
+
+.skill-item span::after {
+    content: attr(data-percent);
+    color: var(--accent-color);
+}
+
+.skill-bar {
+    height: 10px;
+    background-color: var(--gray-color);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-level {
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 5px;
+    transition: width 2.5s ease-in-out;
+    position: relative;
+}
+
+.skill-level::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0 5px 5px 0;
+}
+
+/* Personal info section */
+.personal-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.info-item i {
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 77, 77, 0.1);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+/* Fix for email icon to ensure it's perfectly circular */
+.info-item .email-icon {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+}
+
+.info-item:hover i {
+    background: var(--primary-color);
+    color: white;
+}
+
+.info-item .info-text h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+    opacity: 0.7;
+}
+
+.info-item .info-text p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Responsive adjustments for about page */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-image {
+        max-width: 300px;
+        margin: 0 auto 2rem;
+    }
+    
+    .skills-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .personal-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-text h2 {
+        font-size: 2.2rem;
+    }
+    
+    .about-text h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Quote section - centered styling */
+.quote-section {
+    text-align: center; /* Center all text in the quote section */
+    padding: 4rem 2rem;
+    position: relative;
+}
+
+.quote-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.quote-text {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: white;
+    line-height: 1.6;
+}
+
+.quote-author {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Yhteystiedot-sivu */
+.contact-content {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.contact-info h2,
+.contact-form h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: white; /* Changed from var(--dark-color) to white */
+}
+
+.contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    color: white; /* Ensure contact item icon color is white */
+    padding: 1rem;
+    border-radius: 50%;
+}
+
+.contact-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: white; /* Ensure contact item title color is white */
+}
+
+.social-links-large {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: black; /* Changed from var(--light-color) to black */
+    border-radius: 8px;
+    text-decoration: none;
+    color: white; /* Ensure social link text color is white */
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateX(10px);
+}
+
+.social-link i {
+    font-size: 1.5rem;
+    color: white; /* Ensure social link icon color is white */
+}
+
+/* Lomake */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: white; /* Changed from var(--dark-color) to white */
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--gray-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background: var(--dark-color);
+    color: var(--light-color);
+    backdrop-filter: blur(10px);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(255, 77, 77, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* Form status messages */
+.form-status {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.alert.success {
+    background-color: rgba(40, 167, 69, 0.2);
+    border: 1px solid rgba(40, 167, 69, 0.5);
+    color: #28a745;
+}
+
+.alert.error {
+    background-color: rgba(220, 53, 69, 0.2);
+    border: 1px solid rgba(220, 53, 69, 0.5);
+    color: #dc3545;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .form-status {
+        margin-top: 1rem;
+    }
+    
+    .alert {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+/* Modernit animaatiot */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Scroll-animaatiot */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Uudet efektit */
+.gradient-text {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    color: white; /* Changed from transparent to white */
+}
+
+.section-title::after {
+    animation: none;
+}
+
+/* Hero-osion parannukset */
+.hero-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.shape {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: simpleFloat 8s ease-in-out infinite;
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    top: -200px;
+    right: -200px;
+    opacity: 0.5;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    bottom: -150px;
+    left: -150px;
+    animation-delay: -2s;
+    opacity: 0.3;
+}
+
+.shape-3 {
+    width: 200px;
+    height: 200px;
+    top: 40%;
+    right: 15%;
+    animation-delay: -4s;
+    opacity: 0.2;
+}
+
+@keyframes simpleFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Korttien parannukset */
+.card-overlay {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.skill-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.hover-content {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease 0.1s;
+}
+
+.skill-card:hover .hover-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.hover-content p {
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* Sosiaalisen median linkkien parannukset */
+.social-hover {
+    position: relative;
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 1.5rem;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.social-hover::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.social-hover:hover {
+    transform: translateY(-5px);
+    color: white;
+}
+
+.social-hover:hover::before {
+    transform: scale(1.2);
+}
+
+/* Animaatioiden parannukset */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.15;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.2;
+    }
+}
+
+/* Responsiivisuuden parannukset */
+@media (max-width: 768px) {
+    .hero-shapes {
+        display: none;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-title::after {
+        width: 60px;
+    }
+}
+
+/* Uudet animaatiot */
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+                     0 0 40px rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3),
+                     0 0 20px rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Uudet hero-animaatiot */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+main {
+    padding-top: 6rem; /* Added padding to create more space between the header and the content */
+}
+
+/* Back-to-top nuoli */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 0.7;
+    visibility: visible;
+}
+
+.back-to-top i {
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.back-to-top:hover i {
+    background: var(--gradient);
+    border-color: transparent;
+}
+
+/* Add a section divider that looks like a wave/curve instead of a straight line */
+.section-divider {
+    height: 2px;
+    background: var(--gradient);
+    opacity: 0.3;
+    margin: 2rem auto;
+    max-width: 80%;
+}
+
+/* Disable some heavy animations on mobile/low-end devices */
+@media (prefers-reduced-motion: reduce), (max-width: 768px) {
+    body {
+        background: linear-gradient(125deg, #0f0c29, #302b63, #24243e);
+        background-size: auto;
+        animation: none;
+    }
+    
+    .hero-geometric, .highlights-geometric, .shape {
+        animation: none !important;
+    }
+    
+    .scroll-down, .scroll-up {
+        animation: none !important;
+    }
+    
+    .skill-card:hover {
+        transform: translateY(-5px); /* Reduced movement */
+    }
+}
+
+/* Mobile optimization improvements */
+
+/* Better hamburger menu styling */
+.hamburger {
+    z-index: 1010;
+    padding: 8px;
+    margin-right: -8px;
+}
+
+.hamburger span {
+    background-color: white;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Improved mobile navigation */
+@media (max-width: 768px) {
+    nav ul {
+        background-color: rgba(18, 18, 24, 0.98);
+        border-radius: 0 0 15px 15px;
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        align-items: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transform: translateY(-20px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    nav ul.show {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav ul li a {
+        padding: 1rem 0;
+        width: 100%;
+        justify-content: center;
+        font-size: 1.1rem;
+    }
+    
+    /* Prevent body scrolling when menu is open */
+    body.menu-open {
+        overflow: hidden;
+    }
+    
+    /* Hero section mobile adjustments */
+    .hero {
+        min-height: 85vh;
+        margin-top: 0;
+        padding: 7rem 1rem 3rem;
+    }
+    
+    .hero-content {
+        padding: 1.5rem;
+        width: 90%;
+        max-width: none;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Reduce geometric blur size on mobile for better performance */
+    .hero-geometric {
+        filter: blur(20px);
+        opacity: 0.5;
+    }
+    
+    /* Skills section mobile adjustments */
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        width: 90%;
+    }
+    
+    .skill-card {
+        padding: 1.5rem;
+    }
+    
+    .skill-card i {
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .skill-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    /* Adjust the scroll arrows so they don't take too much space */
+    .scroll-down, .scroll-up {
+        font-size: 1.2rem;
+    }
+    
+    .scroll-down i, .scroll-up i {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .scroll-up {
+        top: 40px;
+    }
+}
+
+/* Small device optimizations */
+@media (max-width: 480px) {
+    /* Further reduce some elements on very small screens */
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hero-content {
+        padding: 1.2rem;
+    }
+    
+    /* Better padding for main content */
+    main {
+        padding-top: 4.5rem;
+    }
+    
+    /* Project page adjustments for small screens */
+    .project-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .project-content {
+        padding: 1.2rem;
+    }
+    
+    .project-tags {
+        gap: 0.3rem;
+    }
+    
+    .project-tags span {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    /* About page mobile adjustments */
+    .about-content {
+        padding: 5rem 1.5rem 2rem;
+    }
+    
+    .about-text h2 {
+        font-size: 2rem;
+    }
+    
+    .about-text h3 {
+        font-size: 1.4rem;
+    }
+    
+    .personal-info {
+        gap: 1.5rem;
+    }
+    
+    /* Contact page mobile adjustments */
+    .contact-content {
+        padding: 4rem 1.5rem 2rem;
+    }
+    
+    .contact-info h2, .contact-form h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Fix overlap issues for multiple viewports */
+@media (min-width: 481px) and (max-width: 767px) {
+    .hero {
+        padding-top: 6rem;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hero h1 {
+        font-size: 4rem;
+    }
+    
+    .about-grid {
+        grid-template-columns: 1fr 1.5fr;
+        gap: 2.5rem;
+    }
+    
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Always show "MP" text in logo on mobile */
+@media (max-width: 768px) {
+    .logo-text {
+        display: none; /* Changed from 'block' to 'none' to hide the text on mobile */
+        font-size: 1.3rem;
+        margin-left: 0.5rem;
+        color: white;
+    }
+    
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+    
+    .logo-svg {
+        display: block; /* Changed from 'none' to 'block' to show the logo on mobile */
+        height: 60px; /* Slightly smaller on mobile */
+    }
+}
+
+/* Fix for bottom spacing on mobile */
+@media (max-width: 768px) {
+    footer {
+        padding-bottom: 4rem; /* Extra padding to prevent content from being hidden behind fixed elements */
+    }
+    
+    .highlights {
+        padding-bottom: 3rem;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) {
+    .btn, .skill-card, nav ul li a, .scroll-up, .scroll-down {
+        /* Make clickable elements larger targets on touch devices */
+        padding: 0.8rem 1rem;
+    }
+    
+    .skill-card {
+        /* Pre-show some hover state on touch devices */
+        border-color: var(--primary-color);
+    }
+}
+
+/* Fix the iOS Safari 100vh bug */
+@supports (-webkit-touch-callout: none) {
+    .hero {
+        min-height: -webkit-fill-available;
+    }
+    
+    .highlights {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Better form elements on mobile */
+@media (max-width: 768px) {
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px; /* Prevents iOS zoom on focus */
+        padding: 0.9rem; /* Larger touch target */
+    }
+    
+    .btn {
+        padding: 1rem 2rem;
+        width: 100%; /* Full width buttons on mobile */
+    }
+}
+
+/* Why Choose Me section styles */
+.why-choose-me {
+    padding: 4rem 2rem;
+    position: relative; /* Ensure relative positioning for absolute children */
+    overflow: hidden;
+}
+
+.why-choose-me .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.why-choose-me .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.benefit-card {
+    background: rgba(26, 26, 46, 0.7);
+    border: 2px solid transparent;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    will-change: transform;
+}
+
+.benefit-card:hover {
+    border-image: var(--gradient);
+    border-image-slice: 1;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 77, 77, 0.2);
+}
+
+.benefit-card i {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    color: white;
+}
+
+.benefit-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    color: white;
+}
+
+.benefit-card .card-overlay {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.benefit-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.benefit-card .hover-content {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease 0.1s;
+}
+
+.benefit-card:hover .hover-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.benefit-card .hover-content p {
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .why-choose-me {
+        padding: 3rem 1rem;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .why-choose-me .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* Section-specific scroll down button */
+.section-scroll {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+/* Add hover state for better visibility */
+.section-scroll:hover {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.1);
+}
+
+/* Call to action section */
+.cta-section {
+    padding: 4rem 2rem 6rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 20%, rgba(255, 77, 77, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(255, 133, 51, 0.05) 0%, transparent 70%);
+    z-index: -1;
+}
+
+.cta-section .container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* Fix highlights section on mobile */
+@media (max-width: 768px) {
+    .cta-section {
+        padding: 3rem 1.5rem 5rem;
+    }
+    
+    .cta-section h2 {
+        font-size: 2rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        width: 90%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+/* Enhanced Hero Section Styles */
+.hero {
+    min-height: 95vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    padding-bottom: 3.5rem;
+    background: transparent;
+    overflow: hidden;
+    margin-top: -50px;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    z-index: 2;
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.hero-image-container {
+    flex: 1;
+    max-width: 350px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    animation: floatSlow 5s infinite ease-in-out;
+    position: relative;
+    background: rgba(30, 30, 60, 0.3);
+    padding: 10px;
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-text {
+    flex: 2;
+    text-align: left;
+    color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    background: rgba(30, 30, 60, 0.3);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 0.8s ease-out;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: white;
+}
+
+.typewriter-container {
+    height: 40px; /* Fixed height to prevent layout shift */
+    margin-bottom: 1.5rem;
+}
+
+.hero .subtitle {
+    font-size: 1.8rem;
+    opacity: 0.95;
+    font-weight: 500;
+    display: inline;
+}
+
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: var(--primary-color);
+    animation: blink 1s infinite;
+    margin-left: 4px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.tag {
+    background: var(--gradient);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 3px 10px rgba(255, 77, 77, 0.2);
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: white;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+.btn-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+.btn:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 77, 77, 0.3);
+}
+
+/* New Animation Classes */
+.float {
+    animation: float 6s infinite ease-in-out;
+}
+
+.float-reverse {
+    animation: float-reverse 7s infinite ease-in-out;
+}
+
+.float-slow {
+    animation: float 12s infinite ease-in-out;
+}
+
+.float-reverse-slow {
+    animation: float-reverse 14s infinite ease-in-out;
+}
+
+.pulse-slow {
+    animation: pulse 10s infinite ease-in-out;
+}
+
+@keyframes floatSlow {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive adjustments for hero section */
+@media (max-width: 992px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .tag-cloud {
+        justify-content: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .hero-text {
+        padding: 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.4rem;
+    }
+
+    .hero-image-container {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text {
+        padding: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .tag {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-image-container {
+        max-width: 200px;
+    }
+}
+
+/* Project Page Enhanced Styles */
+.projects-hero {
+    min-height: 50vh; /* Shorter hero section */
+}
+
+.projects-hero-text {
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+.projects-filter {
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.filter-btn {
+    padding: 0.8rem 1.5rem;
+    background: rgba(26, 26, 46, 0.7);
+    border: 2px solid transparent;
+    border-radius: 30px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.filter-btn:hover, .filter-btn.active {
+    border-image: var(--gradient);
+    border-image-slice: 1;
+    background: var(--gradient);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 77, 77, 0.3);
+}
+
+.featured-project {
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.featured-project-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featured-project-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.featured-project-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.featured-project-image:hover img {
+    transform: scale(1.05);
+}
+
+.featured-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--gradient);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+}
+
+.featured-project-text {
+    padding: 1.5rem;
+}
+
+.featured-project-text h2 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.featured-project-text h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.featured-project-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.projects {
+    padding: 4rem 2rem;
+    position: relative;
+}
+
+.projects .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    background: rgba(26, 26, 46, 0.7);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card:hover {
+    border-image: var(--gradient);
+    border-image-slice: 1;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 77, 77, 0.2);
+}
+
+.project-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 46, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-link {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.project-card:hover .project-link {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.project-card:hover .project-link:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.project-card:hover .project-link:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.project-link:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.project-card:hover .project-content h3 {
+    color: var(--primary-color);
+}
+
+.project-content p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-tags span {
+    background: var(--gradient);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-tags span {
+    transform: scale(1.05);
+}
+
+.project-card .btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive styles for projects page */
+@media (max-width: 992px) {
+    .featured-project-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .featured-project-text h3 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .projects-filter {
+        padding: 1.5rem 0;
+    }
+    
+    .filter-buttons {
+        gap: 0.5rem;
+    }
+    
+    .filter-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .featured-project-text h2 {
+        font-size: 1rem;
+    }
+    
+    .featured-project-text h3 {
+        font-size: 1.6rem;
+    }
+    
+    .featured-badge {
+        top: 10px;
+        right: 10px;
+        padding: 0.3rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-hero {
+        min-height: 40vh;
+    }
+    
+    .projects-hero-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .projects-hero-text .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .filter-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .filter-btn {
+        width: 100%;
+    }
+}
+
+/* Tietoa minusta -sivu - Skills section improvements */
+.skills-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.skill-category {
+    margin-bottom: 1.5rem; /* Reduced from 2.5rem */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skill-category h3 {
+    text-align: center;
+    margin-bottom: 1rem; /* Reduced from 1.5rem */
+}
+
+.skills-list {
+    width: 100%;
+}
+
+.skill-item {
+    width: 100%;
+    margin-bottom: 1rem; /* Reduced from 1.5rem */
+    max-width: 100%;
+    overflow: hidden; /* Fixed: changed overflow-hidden to overflow: hidden; */
+}
+
+.skill-item span {
+    display: flex;
+    justify-content: space-between; /* Keep space-between for alignment */
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: white;
+}
+
+.skill-item span::after {
+    content: attr(data-percent);
+    color: var(--accent-color);
+    margin-left: 20px; /* Added spacing between text and percentage */
+}
+
+.skill-bar {
+    height: 10px;
+    background-color: var(--gray-color);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-level {
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 5px;
+    width: 0; /* Start at 0 width for animation */
+    transition: width 2.5s ease-in-out;
+    position: relative;
+}
+
+.skill-level::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0 5px 5px 0;
+}
+
+/* Responsive adjustments for skills section */
+@media (max-width: 768px) {
+    .skills-container {
+        padding: 0 1rem;
+    }
+}
+
+/* Fix for mobile card border issue */
+@media (hover: hover) {
+    /* Only apply hover effects on devices that support hover */
+    .skill-card:hover .card-overlay,
+    .benefit-card:hover .card-overlay {
+        opacity: 1;
+    }
+    
+    .skill-card:hover,
+    .benefit-card:hover,
+    .step-card:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-5px);
+    }
+}
+
+/* Touch device styles */
+@media (hover: none) {
+    .skill-card.active .card-overlay,
+    .benefit-card.active .card-overlay {
+        opacity: 1;
+    }
+    
+    .skill-card.active,
+    .benefit-card.active,
+    .step-card.active {
+        border-color: var(--primary-color);
+        transform: translateY(-5px);
+    }
+    
+    /* Ensure borders are transparent by default on mobile */
+    .skill-card,
+    .benefit-card,
+    .step-card {
+        border-color: transparent;
+    }
+}
+
+/* Scroll animations for step cards */
+.step-card.scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.step-card.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile optimizations for projects page */
+@media (max-width: 768px) {
+    .projects {
+        padding: 2rem 2rem; /* Reduced top padding from 4rem to 2rem */
+    }
+    
+    .projects-hero {
+        min-height: 35vh; /* Reduced from 50vh */
+    }
+    
+    .project-timeline {
+        margin-top: 2rem; /* Reduced from 4rem */
+    }
+    
+    .availability-section {
+        padding: 3rem 2rem 4rem; /* Reduced from 4rem 2rem 6rem */
+    }
+    
+    main .projects-container {
+        padding-top: 1rem; /* Add some space at top but keep it minimal */
+    }
+    
+    /* Fix for timeline date overlapping text */
+    .timeline-item {
+        padding-top: 1.5rem; /* More space at the top */
+        text-align: center; /* Center all content in timeline item */
+    }
+    
+    .timeline-date {
+        display: block;
+        width: fit-content;
+        margin: 0 auto 1rem auto; /* Center horizontally with auto margins */
+        padding: 0.5rem 1.5rem;
+        background: var(--gradient);
+        color: white;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+    
+    .timeline-item h3 {
+        margin-top: 0.5rem; /* Add more space above the heading */
+        text-align: center; /* Make sure heading is centered too */
+    }
+    
+    .timeline-item p {
+        text-align: left; /* Keep paragraph text left-aligned for readability */
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-hero {
+        min-height: 30vh; /* Further reduced from 40vh */
+    }
+    
+    .timeline-item {
+        padding: 1.5rem; /* Reduced from 2rem */
+        margin-bottom: 1.5rem; /* Reduced from 2rem */
+    }
+    
+    .timeline-date {
+        font-size: 0.8rem; /* Slightly smaller font for very small screens */
+        padding: 0.4rem 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .step-card {
+        padding: 1.5rem; /* Reduced from 2rem */
+    }
+}
+
+/* Always show "MP" text in logo on mobile */
+@media (max-width: 768px) {
+    .logo-text {
+        display: none; /* Changed from 'block' to 'none' to hide the text on mobile */
+        font-size: 1.3rem;
+        margin-left: 0.5rem;
+        color: white;
+    }
+    
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+    
+    .logo-svg {
+        display: block; /* Changed from 'none' to 'block' to show the logo on mobile */
+        height: 60px; /* Slightly smaller on mobile */
+    }
+}
+
+/* Fix for bottom spacing on mobile */
+@media (max-width: 768px) {
+    footer {
+        padding-bottom: 4rem; /* Extra padding to prevent content from being hidden behind fixed elements */
+    }
+    
+    .highlights {
+        padding-bottom: 3rem;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) {
+    .btn, .skill-card, nav ul li a, .scroll-up, .scroll-down {
+        /* Make clickable elements larger targets on touch devices */
+        padding: 0.8rem 1rem;
+    }
+    
+    .skill-card {
+        /* Pre-show some hover state on touch devices */
+        border-color: var(--primary-color);
+    }
+}
+
+/* Mobile Beta Text - Hidden by default */
+.mobile-beta-text {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 3px 8px;
+    border-radius: 10px;
+    z-index: 1001;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Only show on mobile devices */
+@media (max-width: 768px) {
+    .mobile-beta-text {
+        display: block;
+    }
+}
+
+/* Fix for horizontal scrolling issues on mobile */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* Ensure skills section content doesn't overflow on mobile */
+.skills-container {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.skills-section {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.skill-item {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Fix potential overflow from grid elements */
+.about-grid, 
+.skills-list,
+.personal-info {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        max-width: 100%;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+    
+    .about-content,
+    .skills-section,
+    .quote-section {
+        max-width: 100%;
+        overflow-x: hidden;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* Mobile header fixes */
+@media (max-width: 768px) {
+    header {
+        padding: 0.7rem 1.5rem;
+        z-index: 1010;
+        background-color: rgba(15, 12, 41, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    main {
+        padding-top: 100px !important;
+    }
+    
+    /* Adjust hero section and first section to prevent content overlap */
+    .hero {
+        padding-top: 30px;
+        min-height: auto;
+    }
+    
+    .why-choose-me {
+        padding-top: 30px;
+    }
+    
+    .benefits-grid {
+        padding-top: 20px;
+    }
+}
+
+/* Extra padding for very small screens */
+@media (max-width: 380px) {
+    main {
+        padding-top: 120px !important;
+    }
+    
+    .hero {
+        padding-top: 40px;
+    }
+    
+    .benefit-card:first-child {
+        margin-top: 15px;
+    }
+}
+
+/* For medium-sized phones */
+@media (min-width: 381px) and (max-width: 480px) {
+    main {
+        padding-top: 110px !important;
+    }
+    
+    .hero {
+        padding-top: 35px;
+    }
+}
+
+/* Fix iOS Safari 100vh issue */
+@supports (-webkit-touch-callout: none) {
+    main {
+        padding-top: 100px !important;
+    }
+    
+    @media (max-width: 380px) {
+        main {
+            padding-top: 120px !important;
+        }
+    }
+}
+
+/* Apply proper stacking for fixed elements */
+header, .hero-content, .benefit-card, .skill-card {
+    will-change: transform;
+}
+
+/* Parannettu mobiiliheader */
+@media (max-width: 768px) {
+    /* Header-animaatio scrollatessa */
+    header {
+        transition: transform 0.4s ease, background-color 0.3s ease;
+        padding: 0.6rem 1rem;
+        background-color: rgba(15, 12, 41, 0.95);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    }
+    
+    /* Header pienenee ja saa taustavärin scrollatessa */
+    header.scrolled {
+        padding: 0.4rem 1rem;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Lisätään mahdollisuus piilottaa header alaspäin scrollatessa */
+    header.header-hidden {
+        transform: translateY(-100%);
+    }
+    
+    /* Mobile Beta -teksti paremmaksi */
+    .mobile-beta-text {
+        position: absolute;
+        right: 4.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--gradient);
+        color: white;
+        font-size: 0.65rem;
+        font-weight: 600;
+        padding: 0.3rem 0.6rem;
+        border-radius: 4px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        border: none;
+        line-height: 1;
+    }
+    
+    /* Logon teksti piiloon pienimmillä näytöillä, säästää tilaa */
+    @media (max-width: 380px) {
+        .logo-text {
+            display: none;
+        }
+        
+        .mobile-beta-text {
+            right: 3.5rem;
+        }
+    }
+    
+    /* Koko hamburger-menu -alue on klikattava */
+    .hamburger {
+        padding: 12px;
+        margin-right: -12px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    /* Hamburger-viivat selkeämmiksi */
+    .hamburger span {
+        width: 28px;
+        height: 2.5px;
+        margin: 2px 0;
+        border-radius: 2px;
+    }
+    
+    /* Avattu mobiilivalikko on isompi ja selkeämpi */
+    nav ul.show {
+        padding-top: 1.5rem;
+        padding-bottom: 2rem;
+    }
+    
+    nav ul.show li a {
+        padding: 1rem 0;
+        font-size: 1.2rem;
+    }
+    
+    /* Ensimmäinen elementti vähän kauemmas headerista */
+    main {
+        padding-top: 80px;
+    }
+    
+    @media (max-width: 380px) {
+        main {
+            padding-top: 70px;
+        }
+    }
+    
+    /* Skill cardit selkeämmin kosketusalueilla */
+    .skill-card, .benefit-card {
+        padding: 1.8rem 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Korjaa päällekkäiset elementit */
+    .hero-content {
+        margin-top: 1rem;
+    }
+}
+
+/* Parannuksia kosketusnäytön kokemukseen */
+@media (hover: none) {
+    /* Kosketusnäytöllä isommat tarvittavat välit */
+    nav ul.show li a {
+        padding: 1.2rem 0;
+        font-size: 1.3rem;
+    }
+    
+    .btn {
+        padding: 1.3rem 2.5rem;
+    }
+    
+    .skill-card, .benefit-card {
+        margin-bottom: 1.2rem;
+    }
+}
+
+/* Fix the card hover effects to maintain rounded corners */
+.skill-card:hover, .benefit-card:hover, .step-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border: 2px solid transparent;
+    background-image: linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)), 
+                      linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+/* Don't use border-image as it doesn't respect border-radius */
+.skill-card:hover, .benefit-card:hover, .step-card:hover {
+    border-image: none;
+}
+
+/* Same fix for contact cards */
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 77, 77, 0.2);
+    border: 2px solid transparent;
+    background-image: linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)), 
+                      linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.contact-card:hover {
+    border-image: none;
+}
+
+/* Fix for the contact form container hover effect */
+.contact-form-container:hover {
+    border: 2px solid transparent;
+    background-image: linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)), 
+                      linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form-container:hover {
+    border-image: none;
+}

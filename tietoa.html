@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no">
+    <title>Miro Paananen - Tietoa minusta</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="theme-color" content="#0f0c29">
+    <script src="http://localhost:35729/livereload.js"></script>
+    <style>
+        /* Fix for horizontal scrolling on tietoa page */
+        .about-content, 
+        .skills-section, 
+        .quote-section {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        /* Make sure long text in skills section doesn't overflow */
+        .skill-item span {
+            white-space: normal;
+            word-break: break-word;
+        }
+        
+        /* Fix for animations potentially causing overflow */
+        .scroll-reveal {
+            max-width: 100%;
+            overflow: hidden;
+        }
+        
+        /* Fix for skills section centering */
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .skill-category {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+        
+        .skills-list {
+            width: 100%;
+        }
+        
+        .skill-item {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-bar {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header style="background-color: transparent; z-index: 1010;">
+        <nav style="max-width: none; margin: 0; padding-left: 2rem; padding-right: 2rem;">
+            <!-- Remove the logo image -->
+            <!-- <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Logo">
+                    <span class="logo-text">Miro Paananen</span>
+                </a>
+            </div> -->
+            <!-- Center the "Mobiili Beta" text -->
+            <div class="mobile-beta-text" style="left: 50%; transform: translateX(-50%);">Mobiili Beta</div>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Etusivu</a></li>
+                <li><a href="projektit.html"><i class="fas fa-code"></i> Projektit</a></li>
+                <li><a href="tietoa.html" class="active"><i class="fas fa-user"></i> Tietoa minusta</a></li>
+                <li><a href="yhteystiedot.html"><i class="fas fa-envelope"></i> Yhteystiedot</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main style="padding-top: 60px;">
+        <!-- Hero section -->
+        <section class="about-hero">
+            <!-- Geometric elements -->
+            <div class="hero-geometric geo-1 pulse-slow"></div>
+            <div class="hero-geometric geo-2 float-reverse"></div>
+            
+            <!-- Removed the about-hero-content div with the heading and paragraph -->
+        </section>
+        
+        <!-- About content -->
+        <section class="about-content">
+            <div class="about-grid">
+                <!-- Removed the about-values section with "Arvoni" -->
+                <div class="about-text">
+                    <h2>Kuka olen?</h2>
+                    <p>Olen intohimoinen web-kehittäjä Viitasaarelta, joka rakastaa luoda kauniita ja toimivia verkkosivustoja. Minulla on vahva osaaminen modernien web-teknologioiden parissa ja pyrin jatkuvasti kehittämään taitojani ja oppimaan uutta.</p>
+                    
+                    <p>Projektini perustuvat vahvaan tekniseen osaamiseen sekä tinkimättömään tyylitajuun. Jokainen työ on räätälöity vastaamaan asiakkaan tarpeita, tavoitteena aina käyttäjäystävällinen ja visuaalisesti vaikuttava lopputulos.</p>
+                    
+                    <div class="personal-info">
+                        <div class="info-item scroll-reveal">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="info-text">
+                                <h4>Sijainti</h4>
+                                <p>Viitasaari</p>
+                            </div>
+                        </div>
+                        <div class="info-item scroll-reveal">
+                            <i class="fas fa-envelope email-icon"></i>
+                            <div class="info-text">
+                                <h4>Sähköposti</h4>
+                                <p>mipa.paananen@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item scroll-reveal">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div class="info-text">
+                                <h4>Koulutus</h4>
+                                <p>Careeria Porvoo</p>
+                            </div>
+                        </div>
+                        <div class="info-item scroll-reveal">
+                            <i class="fas fa-laptop-code"></i>
+                            <div class="info-text">
+                                <h4>Freelancer</h4>
+                                <p>Käytettävissä projekteille</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Add section divider -->
+        <div class="section-divider"></div>
+        
+        <!-- New Skills Section -->
+        <section class="skills-section">
+            <h2 class="section-title">Osaamiseni</h2>
+            <div class="skills-container">
+                <div class="skill-category scroll-reveal">
+                    <h3>Web-teknologiat</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span data-percent="95%">HTML & CSS</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span data-percent="85%">JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span data-percent="80%">React</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category scroll-reveal">
+                    <h3>Suunnittelu</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span data-percent="90%">UI/UX Suunnittelu</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span data-percent="85%">Responsiivinen suunnittelu</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span data-percent="80%">Figma / Adobe XD</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category scroll-reveal">
+                    <h3>Backend & Muut</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span data-percent="75%">Node.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span data-percent="70%">WordPress</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span data-percent="80%">SEO-optimointi</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Add section divider -->
+        <div class="section-divider"></div>
+        
+        <!-- New Quote Section -->
+        <section class="quote-section">
+            <div class="quote-geometric quote-geo-1"></div>
+            <div class="quote-geometric quote-geo-2"></div>
+            
+            <div class="quote-container">
+                <p class="quote-text">Erinomainen suunnittelu ei ole sitä, ettei ole mitään lisättävää, vaan sitä, ettei ole mitään poistettavaa.</p>
+                <p class="quote-author">― Antoine de Saint-Exupéry</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links" style="display: none;">
+                <a href="#" class="social-hover"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-hover"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-hover"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2025 Miro Paananen. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+            this.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('nav ul').classList.remove('show');
+                document.querySelector('.hamburger').classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (!nav.contains(e.target) && document.querySelector('nav ul').classList.contains('show')) {
+                document.querySelector('nav ul').classList.remove('show');
+                hamburger.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        });
+
+        // Enhanced scroll animations with IntersectionObserver for skill bars
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all skill levels to 0 width
+            document.querySelectorAll('.skill-level').forEach(bar => {
+                bar.style.width = "0%";
+            });
+
+            // Create observer for all elements that should animate on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // If it's a skill item, animate the skill bar and percentage
+                        if (entry.target.classList.contains('skill-item')) {
+                            animateSkill(entry.target);
+                        }
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Observe all scroll-reveal elements
+            document.querySelectorAll('.scroll-reveal, .skill-item').forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Function to animate a skill bar and its percentage
+            function animateSkill(skillItem) {
+                const percentSpan = skillItem.querySelector('span');
+                const skillBar = skillItem.querySelector('.skill-level');
+                const targetPercent = percentSpan.getAttribute('data-percent');
+                
+                // Animate the skill bar width more slowly (using CSS transition set in styles.css)
+                setTimeout(() => {
+                    skillBar.style.width = targetPercent;
+                }, 100);
+                
+                // Animate the percentage number - slowed down
+                const targetValue = parseInt(targetPercent);
+                let currentValue = 0;
+                const duration = 2500; // Increased from 1500 to 2500 milliseconds (2.5 seconds)
+                const interval = 30; // update every 30ms
+                const steps = duration / interval;
+                const increment = targetValue / steps;
+                
+                const counter = setInterval(() => {
+                    currentValue += increment;
+                    
+                    if (currentValue >= targetValue) {
+                        clearInterval(counter);
+                        currentValue = targetValue;
+                    }
+                    
+                    // Update just the content after the skill name
+                    // Store the original text content in a data attribute if not already stored
+                    if (!percentSpan.hasAttribute('data-text')) {
+                        percentSpan.setAttribute('data-text', percentSpan.textContent);
+                    }
+                    
+                    percentSpan.setAttribute('data-current-percent', Math.floor(currentValue) + '%');
+                }, interval);
+            }
+        });
+
+        // Parannettu header-toiminnallisuus mobiilissa
+        let lastScrollTop = 0;
+        let headerTimeoutId;
+        
+        function handleHeaderVisibility() {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Näytä header aina, kun scrollataan ylös
+            if (currentScroll < lastScrollTop) {
+                header.classList.remove('header-hidden');
+                
+                // Lisätään scrolled-luokka, jos ollaan scrollattu yli 50px
+                if (currentScroll > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            } 
+            // Piilota header, kun scrollataan alas ja ollaan yli 150px alhaalla
+            else if (currentScroll > lastScrollTop && currentScroll > 150) {
+                header.classList.add('header-hidden');
+                
+                // Varmistetaan, että scrolled-luokka on päällä
+                if (currentScroll > 50) {
+                    header.classList.add('scrolled');
+                }
+            }
+            
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        }
+        
+        // Käytetään vain mobiilissa
+        if (window.innerWidth <= 768) {
+            window.addEventListener('scroll', function() {
+                clearTimeout(headerTimeoutId);
+                
+                // Rajoitetaan suorituskertoja suorituskyvyn parantamiseksi
+                headerTimeoutId = setTimeout(handleHeaderVisibility, 10);
+            }, { passive: true });
+        }
+    </script>
+</body>
+</html>

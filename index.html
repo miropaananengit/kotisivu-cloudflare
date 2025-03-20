@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Miro Paananen</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add theme color for mobile browsers -->
+    <meta name="theme-color" content="#0f0c29">
+    <script src="http://localhost:35729/livereload.js"></script>
+</head>
+<body>
+    <header style="background-color: transparent; z-index: 1010;">
+        <nav style="max-width: none; margin: 0; padding-left: 2rem; padding-right: 2rem;">
+            <!-- Remove the logo image -->
+            <!-- <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Logo">
+                    <span class="logo-text">Miro Paananen</span>
+                </a>
+            </div> -->
+            <!-- Center the "Mobiili Beta" text -->
+            <div class="mobile-beta-text" style="left: 50%; transform: translateX(-50%);">Mobiili Beta</div>
+            <ul>
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Etusivu</a></li>
+                <li><a href="projektit.html"><i class="fas fa-code"></i> Projektit</a></li>
+                <li><a href="tietoa.html"><i class="fas fa-user"></i> Tietoa minusta</a></li>
+                <li><a href="yhteystiedot.html"><i class="fas fa-envelope"></i> Yhteystiedot</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main style="padding-top: 100px;">
+        <section class="hero">
+            <!-- Enhanced geometric elements with animation classes -->
+            <div class="hero-geometric geo-1 pulse-slow"></div>
+            <div class="hero-geometric geo-2 float-reverse"></div>
+            <div class="hero-geometric geo-3 float"></div>
+            
+            <div class="hero-content">
+                <div class="hero-image-container">
+                    <img src="images/profile-illustration.svg" alt="Miro Paananen" class="hero-image">
+                </div>
+                <div class="hero-text">
+                    <h1 class="gradient-text">Hei, olen Miro!</h1>
+                    <div class="typewriter-container">
+                        <p class="subtitle"><span id="typewriter"></span><span class="cursor" style="background-color: white;"></span></p>
+                    </div>
+                    <div class="tag-cloud">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">React</span>
+                        <span class="tag">UI/UX</span>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="projektit.html" class="btn primary">
+                            <span class="btn-content"><i class="fas fa-code"></i> Katso projektejani</span>
+                        </a>
+                        <a href="yhteystiedot.html" class="btn secondary">
+                            <span class="btn-content"><i class="fas fa-envelope"></i> Ota yhteyttä</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Background shapes for additional depth with enhanced animation -->
+            <div class="hero-shapes">
+                <div class="shape shape-1 float-slow"></div>
+                <div class="shape shape-2 float-reverse-slow"></div>
+                <div class="shape shape-3 pulse-slow"></div>
+            </div>
+            
+            <a href="#why-choose-me-section" class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <!-- Add a gentle visual indicator between sections that doesn't break the flow -->
+        <div class="section-divider"></div>
+
+        <section id="why-choose-me-section" class="why-choose-me">
+            <div class="container">
+                <!-- Title removed as requested -->
+                <div class="benefits-grid">
+                    <div class="benefit-card skill-card scroll-reveal">
+                        <i class="fas fa-pencil-ruler"></i>
+                        <h3>Räätälöidyt ratkaisut</h3>
+                        <p>Ei rajoituksia sivupohjissa tai toiminnallisuuksissa.</p>
+                        <div class="card-overlay">
+                            <div class="hover-content">
+                                <p>Jokainen verkkosivusto rakennetaan täysin sinun tarpeidesi mukaan.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="benefit-card skill-card scroll-reveal">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h3>Nopeat lataukset</h3>
+                        <p>Nopeasti latautuvat sivut takaavat paremman käyttäjäkokemuksen.</p>
+                        <div class="card-overlay">
+                            <div class="hover-content">
+                                <p>Nopeus on avaintekijä modernien verkkosivujen menestyksessä.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="benefit-card skill-card scroll-reveal">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Turvallisuus ja päivitykset</h3>
+                        <p>Ei riskiä vanhentuneista lisäosista tai tietoturva-aukoista.</p>
+                        <div class="card-overlay">
+                            <div class="hover-content">
+                                <p>Sivustosi pysyy turvallisena ja ajantasaisena ilman lisämaksuja.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="benefit-card skill-card scroll-reveal">
+                        <i class="fas fa-search"></i>
+                        <h3>Google näkyvyys</h3>
+                        <p>Parempi sijoitus Googlessa, enemmän asiakkaita.</p>
+                        <div class="card-overlay">
+                            <div class="hover-content">
+                                <p>Hakukoneoptimoitu sivusto auttaa asiakkaitasi löytämään palvelusi helpommin.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#skills-section" class="scroll-down section-scroll">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section id="skills-section" class="highlights" style="min-height: auto; padding-bottom: 3rem;">
+            <!-- Add new geometric elements -->
+            <div class="highlights-geometric h-geo-1"></div>
+            <div class="highlights-geometric h-geo-2"></div>
+            
+            <!-- Removed the scroll-up arrow -->
+            <div class="skills-grid">
+                <div class="skill-card scroll-reveal">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Web-kehitys</h3>
+                    <p>HTML, CSS, JavaScript</p>
+                    <div class="card-overlay">
+                        <div class="hover-content">
+                            <p>Modernit verkkosivut ja sovellukset nykyaikaisilla tekniikoilla.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card scroll-reveal">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Suunnittelu</h3>
+                    <p>UI/UX, Responsiivisuus</p>
+                    <div class="card-overlay">
+                        <div class="hover-content">
+                            <p>Käyttäjäystävälliset ja visuaalisesti näyttävät käyttöliittymät.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card scroll-reveal">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobiili</h3>
+                    <p>Responsiivinen suunnittelu</p>
+                    <div class="card-overlay">
+                        <div class="hover-content">
+                            <p>Sivustot toimivat täydellisesti kaikilla laitteilla ja näytön koolla.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card scroll-reveal">
+                    <i class="fas fa-headset"></i>
+                    <h3>Tuki</h3>
+                    <p>Nopea yhteydenotto</p>
+                    <div class="card-overlay">
+                        <div class="hover-content">
+                            <p>Tavoitat minut helposti puhelimitse, WhatsAppilla tai sähköpostilla.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- New call-to-action section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Valmis aloittamaan projektin kanssani?</h2>
+                <p>Otathan yhteyttä keskustellaksesi projektistasi ja siitä, kuinka voin auttaa sinua.</p>
+                <div class="cta-buttons">
+                    <a href="projektit.html" class="btn primary">Tutustu töihini</a>
+                    <a href="yhteystiedot.html" class="btn secondary">Ota yhteyttä</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links" style="display: none;">
+                <a href="#" class="social-hover"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-hover"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-hover"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2025 Miro Paananen. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger-valikon toiminnallisuus with body scroll lock for mobile
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+            this.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('nav ul').classList.remove('show');
+                document.querySelector('.hamburger').classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (!nav.contains(e.target) && document.querySelector('nav ul').classList.contains('show')) {
+                document.querySelector('nav ul').classList.remove('show');
+                hamburger.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        });
+
+        // Optimized scroll animations - only check items in viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Stop observing once the animation is triggered
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe all scroll-reveal elements
+        document.querySelectorAll('.scroll-reveal').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Optimize hover effect for cards - debounce mousemove events
+        let debounceTimeout;
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                if (!debounceTimeout) {
+                    debounceTimeout = setTimeout(() => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        
+                        card.style.setProperty('--mouse-x', `${x}px`);
+                        card.style.setProperty('--mouse-y', `${y}px`);
+                        
+                        debounceTimeout = null;
+                    }, 10); // 10ms debounce
+                }
+            });
+        });
+
+        // Optimize scroll listener with throttling
+        let lastScrollTime = 0;
+        function throttledScroll() {
+            const now = Date.now();
+            if (now - lastScrollTime > 100) { // Check every 100ms
+                lastScrollTime = now;
+                
+                // Header class toggle
+                if (window.scrollY > 50) {
+                    document.querySelector('header').classList.add('scrolled');
+                } else {
+                    document.querySelector('header').classList.remove('scrolled');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', throttledScroll, { passive: true });
+
+        // Optimize smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Different offset for different sections
+                    let offset = 80;
+                    
+                    // Special handling for why-choose-me section to show cards in middle of viewport
+                    if (targetId === "#why-choose-me-section") {
+                        // Calculate offset to position cards in the middle
+                        const viewportHeight = window.innerHeight;
+                        const sectionHeight = targetElement.offsetHeight;
+                        // Adjust this value to control how much of the section is visible
+                        offset = Math.max(80, viewportHeight * 0.3);
+                    }
+                    
+                    // Use requestAnimationFrame for smoother scrolling
+                    const scrollToPosition = targetElement.offsetTop - offset;
+                    window.scrollTo({
+                        top: scrollToPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Removed scroll-up button code
+        
+        // Initialize GPU acceleration for key elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force GPU acceleration on elements that need it
+            const forceGPU = [
+                '.hero-geometric', 
+                '.highlights-geometric', 
+                '.skill-card',
+                '.geo-1', '.geo-2', '.geo-3',
+                '.h-geo-1', '.h-geo-2',
+                '.hero-content',
+                '.skill-card',
+                '.section-scroll' // Add section-scroll to GPU acceleration
+            ];
+            
+            forceGPU.forEach(selector => {
+                document.querySelectorAll(selector).forEach(el => {
+                    // Force hardware acceleration
+                    el.style.transform = 'translateZ(0)';
+                });
+            });
+            
+            // Detect touch device and add class to body
+            if ('ontouchstart' in document.documentElement) {
+                document.body.classList.add('touch-device');
+            }
+        });
+        
+        // Handle device orientation changes for responsive layouts
+        window.addEventListener('orientationchange', function() {
+            // Small timeout to allow the orientation change to complete
+            setTimeout(() => {
+                // Reset any calculated dimensions
+                document.querySelectorAll('.skill-card, .hero-content').forEach(el => {
+                    el.style.transform = 'translateZ(0)';
+                });
+            }, 300);
+        });
+        
+        // Typewriter effect for the hero section
+        document.addEventListener('DOMContentLoaded', function() {
+            // Texts to cycle through
+            const texts = [
+                "web-kehittäjä & suunnittelija",
+                "frontend-osaaja",
+                "UI/UX-suunnittelija", 
+                "responsiivisten sivustojen tekijä"
+            ];
+            
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100; // Base typing speed
+            
+            const typewriterElement = document.getElementById('typewriter');
+            
+            function typeWriter() {
+                const currentText = texts[textIndex];
+                
+                if (isDeleting) {
+                    // Deleting text
+                    typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                    typingSpeed = 50; // Faster when deleting
+                } else {
+                    // Typing text
+                    typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingSpeed = 100; // Normal speed when typing
+                }
+                
+                // If word is complete
+                if (!isDeleting && charIndex === currentText.length) {
+                    isDeleting = true;
+                    typingSpeed = 1500; // Pause at end of word
+                } 
+                // If deletion is complete
+                else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length; // Move to next text
+                    typingSpeed = 500; // Pause before typing next word
+                }
+                
+                setTimeout(typeWriter, typingSpeed);
+            }
+            
+            // Start the typewriter effect
+            typeWriter();
+        });
+
+        // Parannettu header-toiminnallisuus mobiilissa
+        let lastScrollTop = 0;
+        let headerTimeoutId;
+        
+        function handleHeaderVisibility() {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Näytä header aina, kun scrollataan ylös
+            if (currentScroll < lastScrollTop) {
+                header.classList.remove('header-hidden');
+                
+                // Lisätään scrolled-luokka, jos ollaan scrollattu yli 50px
+                if (currentScroll > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            } 
+            // Piilota header, kun scrollataan alas ja ollaan yli 150px alhaalla
+            else if (currentScroll > lastScrollTop && currentScroll > 150) {
+                header.classList.add('header-hidden');
+                
+                // Varmistetaan, että scrolled-luokka on päällä
+                if (currentScroll > 50) {
+                    header.classList.add('scrolled');
+                }
+            }
+            
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        }
+        
+        // Käytetään vain mobiilissa
+        if (window.innerWidth <= 768) {
+            window.addEventListener('scroll', function() {
+                clearTimeout(headerTimeoutId);
+                
+                // Rajoitetaan suorituskertoja suorituskyvyn parantamiseksi
+                headerTimeoutId = setTimeout(handleHeaderVisibility, 10);
+            }, { passive: true });
+        }
+
+        // Kosketusnäyttöjen korjaukset
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.skill-card, .benefit-card').forEach(card => {
+                card.addEventListener('touchstart', function() {
+                    // Poista kaikilta muilta active-luokka
+                    document.querySelectorAll('.skill-card.active, .benefit-card.active').forEach(activeCard => {
+                        if (activeCard !== this) activeCard.classList.remove('active');
+                    });
+                    
+                    // Toggle active-luokka tälle kortille
+                    this.classList.toggle('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
