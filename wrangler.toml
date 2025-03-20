@@ -1,6 +1,0 @@
-name = "kotisivu-cloudflare"
-main = "workers-site/index.js"
-compatibility_date = "2025-03-20"
-
-[site]
-bucket = "."
