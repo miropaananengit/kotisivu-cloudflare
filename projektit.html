@@ -2,7 +2,7 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miro Paananen - Projektit</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -146,6 +146,69 @@
             font-size: 1rem;
             opacity: 0.9;
         }
+        
+        /* Completed projects styling */
+        .completed-projects {
+            margin-top: 4rem;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .project-card {
+            background: rgba(26, 26, 46, 0.4);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-left-width: 8px;
+        }
+        
+        .project-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .project-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .project-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: var(--gradient);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .project-card {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -193,6 +256,23 @@
                         <a href="yhteystiedot.html" class="btn primary">
                             <span class="btn-content"><i class="fas fa-envelope"></i> Ota yhteyttä</span>
                         </a>
+                    </div>
+                </div>
+                
+                <!-- New content: Completed Projects -->
+                <div class="completed-projects">
+                    <h2 class="section-title">Valmiit projektit</h2>
+                    
+                    <div class="project-card scroll-reveal">
+                        <span class="project-badge">2025</span>
+                        <h3>Muistiinpano - Selkeä muistiinpanosovellus</h3>
+                        <img src="images/muistiinpano-app.png" alt="Muistiinpano-sovelluksen kuvakaappaus" class="project-image">
+                        <p>Yksinkertainen ja helppokäyttöinen verkkoselainpohjainen muistiinpanosovellus. Sovellus mahdollistaa muistiinpanojen luomisen, muokkaamisen ja poistamisen käyttäjäystävällisellä käyttöliittymällä. Käyttäjät voivat myös tallentaa muistiinpanonsa PDF-muotoon helposti yhdellä klikkauksella. Toteutettu moderneja web-teknologioita hyödyntäen, mukaan lukien JavaScript, HTML5 ja CSS3.</p>
+                        <div class="project-links">
+                            <a href="https://muistiinpano.netlify.app/" target="_blank" class="btn secondary">
+                                <span class="btn-content"><i class="fas fa-external-link-alt"></i> Avaa sovellus</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
@@ -339,7 +419,7 @@
             }, { threshold: 0.1 });
             
             // Add scroll-reveal class to step cards and observe them
-            document.querySelectorAll('.step-card').forEach(card => {
+            document.querySelectorAll('.step-card, .project-card').forEach(card => {
                 card.classList.add('scroll-reveal');
                 observer.observe(card);
             });
